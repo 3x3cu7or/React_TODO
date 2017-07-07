@@ -1,7 +1,7 @@
 import {createAction} from 'redux-actions'
 import Immutable from 'seamless-immutable';
 import request from 'superagent'
-
+import store from '../store.js';
 
 export default function todosReducer(state = Immutable({}), action) {
   switch (action.type) {
@@ -12,13 +12,6 @@ export default function todosReducer(state = Immutable({}), action) {
       text: 'default text'
     }
     ])
-    case "TOGGLE_TODO":
-    return state.map(todo => (todo.id === action.payload)
-      ? {
-        ...todo,
-        completed: !todo.completed
-      }
-      : todo)
     case "FETCH_TODOS":
     return action.payload
     default:
@@ -28,11 +21,22 @@ export default function todosReducer(state = Immutable({}), action) {
 }
 
 
-export const toggleTodo = createAction('TOGGLE_TODO')
+// export const toggleTodo = createAction('TOGGLE_TODO')
 
 export const changeFilter = createAction('CHANGRFILTER')
 
+export function toggleTodo(id){
+  console.log(store.getState().todos.filter( (todo) => todo.id === id))
+  let todo = store.getState().todos.filter( (todo) => todo.id === id)[0]
+  console.log(todo.completed)
+  return dispatch => {
+    request
+    .patch('http://localhost:3000/todos/'+id,)
+    .send({"completed": !todo.completed})
+    .then( ()=> dispatch(fetchTodos()))
 
+  }
+}
 
 export function fetchTodos(){
   return dispatch => {
@@ -44,11 +48,9 @@ export function fetchTodos(){
 export function addTodo(todo){
   return dispatch => {
     request
-    .post('http://localhost:3000/todos')
-    .send(todo)
-    .then(() => {
-      request('GET', 'http://localhost:3000/todos')
-      .then(response => { dispatch({type: "FETCH_TODOS", payload: response.body })});
-    })
+      .post('http://localhost:3000/todos')
+      .send(todo)
+      .then( () => dispatch(fetchTodos()));
   }
+
 }
