@@ -34,9 +34,7 @@ class App extends React.Component {
             selectedFilter={filter}
             changeFilter={changeFilter}
           />
-          <button >
-            Clean
-          </button>
+
       </div>
     )
   }

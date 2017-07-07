@@ -56,7 +56,7 @@ class Todo extends React.Component {
             <li onClick={() => this.props.toggleTodo(this.props.id)  } style={{color: "#d3d3d3", display: "inline-block"}}>
               {this.props.text}
               <span >&#x2713;</span>
-              <span style={{color:"red"}} onClick={()=> this.props.deleteTodo(this.props.id)}>
+              <span style={{color:"red"}} onClick={(e)=> {e.stopPropagation(); e.preventDefault(); this.props.deleteTodo(this.props.id)}}>
                 x
               </span>
             </li>
