@@ -10,31 +10,30 @@ class App extends React.Component {
     autoBind(this)
   }
 
-  componentWillMount(){
+  componentWillMount() {
     this.props.actions.fetchTodos()
   }
 
-  render(){
+  render() {
     let {addTodo, fetchTodos, toggleTodo, changeFilter, deleteTodo} = this.props.actions
     let {todos, filter} = this.props
-    return(
+    return (
       <div>
         <h2>TODO:</h2>
-          <AddTodo
-            addTodo={addTodo}
-            fetchTodos={fetchTodos}
-           />
-          <TodoList
-            filter={filter}
-            toggleTodo={toggleTodo}
-            todos={todos}
-            deleteTodo={deleteTodo}
-          />
-          <Filters
-            selectedFilter={filter}
-            changeFilter={changeFilter}
-          />
-
+        <AddTodo
+          addTodo={addTodo}
+          fetchTodos={fetchTodos}
+        />
+        <TodoList
+          filter={filter}
+          toggleTodo={toggleTodo}
+          todos={todos}
+          deleteTodo={deleteTodo}
+        />
+        <Filters
+          selectedFilter={filter}
+          changeFilter={changeFilter}
+        />
       </div>
     )
   }

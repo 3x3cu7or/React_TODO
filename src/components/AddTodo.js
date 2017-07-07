@@ -1,11 +1,12 @@
 import React from 'react'
 import autoBind from 'react-autobind'
+
 class AddTodo extends React.Component {
   constructor(props) {
     super(props)
     autoBind(this)
     this.state = {
-      text: '',
+      text: ''
     }
   }
 
@@ -21,7 +22,8 @@ class AddTodo extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" id="todoInput" onChange={e => this.setState({text: e.target.value}) }
+        <input type="text" id="todoInput"
+          onChange={e => this.setState({text: e.target.value})}
           onKeyDown={(e) => {
           if (e.key === 'Enter') {
             this.postTodo()
@@ -33,7 +35,6 @@ class AddTodo extends React.Component {
       </div>
     )
   }
-
 }
 
 export default AddTodo

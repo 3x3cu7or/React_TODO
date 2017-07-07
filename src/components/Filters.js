@@ -9,23 +9,23 @@ class Filters extends React.Component {
   }
 
   render() {
-    const filters = [  "All", "Active", "Completed"]
-    const { changeFilter, selectedFilter } = this.props;
-     return (
-        <div>
-          Show: {filters.map(
-            (filter, index) =>
-              <div key={index} style={{display: "inline-block", marginRight: 10}}>
-                <Filter
-                    changeFilter={changeFilter}
-                    selectedFilter={selectedFilter}
-                    filter={filter}
-                />
-              </div>
-            )}
-        </div>
-      )
-    }
+    const filters = ["All", "Active", "Completed"]
+    const {changeFilter, selectedFilter} = this.props;
+    return (
+      <div>
+        Show: {filters.map((filter, index) => <div key={index} style={{
+          display: "inline-block",
+          marginRight: 10
+        }}>
+          <Filter
+            changeFilter={changeFilter}
+            selectedFilter={selectedFilter}
+            filter={filter}
+          />
+        </div>)}
+      </div>
+    )
   }
+}
 
 export default Filters
