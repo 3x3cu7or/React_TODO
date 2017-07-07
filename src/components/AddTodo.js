@@ -5,7 +5,7 @@ class AddTodo extends React.Component {
     super(props)
     autoBind(this)
     this.state = {
-      text: ''
+      text: '',
     }
   }
 

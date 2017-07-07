@@ -19,7 +19,10 @@ class App extends React.Component {
     return(
       <div>
         <h2>TODO:</h2>
-          <AddTodo addTodo={this.props.actions.addTodo} />
+          <AddTodo
+            addTodo={this.props.actions.addTodo}
+            fetchTodos={this.props.actions.fetchTodos}
+           />
           <TodoList
             filter={this.props.filter}
             toggleTodo={this.props.actions.toggleTodo}
