@@ -15,23 +15,28 @@ class App extends React.Component {
   }
 
   render(){
-
+    let {addTodo, fetchTodos, toggleTodo, changeFilter, deleteTodo} = this.props.actions
+    let {todos, filter} = this.props
     return(
       <div>
         <h2>TODO:</h2>
           <AddTodo
-            addTodo={this.props.actions.addTodo}
-            fetchTodos={this.props.actions.fetchTodos}
+            addTodo={addTodo}
+            fetchTodos={fetchTodos}
            />
           <TodoList
-            filter={this.props.filter}
-            toggleTodo={this.props.actions.toggleTodo}
-            todos={this.props.todos}
+            filter={filter}
+            toggleTodo={toggleTodo}
+            todos={todos}
+            deleteTodo={deleteTodo}
           />
           <Filters
-            selectedFilter={this.props.filter}
-            changeFilter={this.props.actions.changeFilter}
+            selectedFilter={filter}
+            changeFilter={changeFilter}
           />
+          <button >
+            Clean
+          </button>
       </div>
     )
   }

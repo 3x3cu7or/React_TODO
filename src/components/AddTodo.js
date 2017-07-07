@@ -15,12 +15,13 @@ class AddTodo extends React.Component {
       completed: false
     }
     this.props.addTodo(todo)
+    document.getElementById('todoInput').value = ""
   }
 
   render() {
     return (
       <div>
-        <input type="text" onChange={e => this.setState({text: e.target.value})}
+        <input type="text" id="todoInput" onChange={e => this.setState({text: e.target.value}) }
           onKeyDown={(e) => {
           if (e.key === 'Enter') {
             this.postTodo()

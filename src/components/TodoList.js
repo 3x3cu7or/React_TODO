@@ -25,7 +25,12 @@ class TodoList extends React.Component {
         <ul>
           {filteredTodos.map((todo, k) => (
             <div key={k}>
-              <Todo toggleTodo={this.props.toggleTodo} text={todo.text} id={todo.id} completed={todo.completed} />
+              <Todo
+                toggleTodo={this.props.toggleTodo}
+                text={todo.text} id={todo.id}
+                completed={todo.completed}
+                deleteTodo={this.props.deleteTodo}
+              />
             </div>
             ))}
       </ul>
@@ -42,9 +47,6 @@ class Todo extends React.Component {
 
   }
 
-  toggleAndColor(){
-    this.props.toggleTodo(this.props.id)
-  }
 
 
   render() {
@@ -54,6 +56,9 @@ class Todo extends React.Component {
             <li onClick={() => this.props.toggleTodo(this.props.id)  } style={{color: "#d3d3d3", display: "inline-block"}}>
               {this.props.text}
               <span >&#x2713;</span>
+              <span style={{color:"red"}} onClick={()=> this.props.deleteTodo(this.props.id)}>
+                x
+              </span>
             </li>
         )
     } else {

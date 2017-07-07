@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import App from '../components/App'
-import {addTodo, toggleTodo, fetchTodos } from '../ducks/app'
+import {addTodo, toggleTodo, fetchTodos, deleteTodo } from '../ducks/app'
 import {changeFilter} from '../ducks/filter'
 
 
@@ -16,6 +16,7 @@ function mapDispatchToProps(dispatch) {
       toggleTodo,
       changeFilter,
       fetchTodos,
+      deleteTodo,
     }, dispatch)
   }
 }
